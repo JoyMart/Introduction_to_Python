@@ -80,7 +80,7 @@ def onSelect(self, event):
         with conn:
                 cur = conn.cursor
                 cur.execute("""SELECT col_fname, col_lname, col_phone, col_email FROM tbl phonebook WHERE col_fullname = (?)""", [value])
-                var_body = cur.fetchall()
+                varBody = cur.fetchall()
                 #returns tuple to slice into parts
                 for data in varBody:
                          self.txt_fname.delete(0, END)
@@ -114,7 +114,7 @@ def addToList(self):
                                 self.lst_List1.insert(END, var_fullname)
                                 onClear(self)
                         else:
-                                messagebox.showerror("Name Error", " '{}' already exists in the database! Please choose a different name.".format(car_fullname))
+                                messagebox.showerror("Name Error", " '{}' already exists in the database! Please choose a different name.".format(var_fullname))
                                 onClear(self)
                         conn.commit()
                 conn.close()
@@ -137,7 +137,7 @@ def onDelete(self):
                                 onDeleted(self)
                                 conn.commit()
                 else:
-                        confirm = messagebox.showerror("Last Record Error", "({}) is the last record in the database and cannot be deleted at this time. \n\nPlease add anotherrecord first before you can delete ({}).".format(var_select, var_select))
+                        confirm = messagebox.showerror("Last Record Error", "({}) is the last record in the database and cannot be deleted at this time. \n\nPlease add another record first before you can delete ({}).".format(var_select, var_select))
         conn.close()
 
 
@@ -145,7 +145,7 @@ def onDeleted(self):
         self.txt_fname.delete(0, END)
         self.txt_lname.delete(0, END)
         self.txt_phone.delete(0, END)
-        self.txt_emaile.delete(0, END)
+        self.txt_email.delete(0, END)
         try:
                 index = self.lst_List1.curselection()[0]
                 self.lst_list1.delete(index)
