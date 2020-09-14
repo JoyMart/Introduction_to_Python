@@ -5,22 +5,23 @@
 #
 #
 
-class Protected:
-        def __init__(self):
-                self.__privateVar = 12
+class User:
+        def __init__(self, user, password):
+                self.__password=password #private
+                self._username=user #protected
                 
-        def getPrivate(self):
-                print(self.__privateVar)
-                
-        def setPrivate(self, private):
-                self.__privateVar = private
-
-                
-obj = Protected()
-obj.__protectedVar = 34
-print(obj.__protectedVar)
-obj.setPrivate(30)
-obj.getPrivate()
+        def printThem(self):
+                print("this is your user info")
+                print("Your Password: {}".format(self.__password))
+                print("Your Username: {}".format(self._username))
 
 
-#print(newNum.self.number1)
+
+
+user1 = User("myUsername", "password123!")
+user1.printThem()
+
+                
+
+
+
